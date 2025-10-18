@@ -1,3 +1,4 @@
+// src/components/MatrixBackground.tsx
 import { useEffect, useRef } from 'react';
 
 export const MatrixBackground = () => {
@@ -13,29 +14,35 @@ export const MatrixBackground = () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
 
-    const chars = '01アイウエオカキクケコサシスセソタチツテト';
+    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const fontSize = 14;
     const columns = canvas.width / fontSize;
     const drops: number[] = [];
-
+    
     for (let i = 0; i < columns; i++) {
       drops[i] = Math.random() * -100;
     }
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(3, 7, 18, 0.05)';
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.05)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = '#00CED1';
+      
       ctx.font = `${fontSize}px monospace`;
-
+      
       for (let i = 0; i < drops.length; i++) {
         const text = chars[Math.floor(Math.random() * chars.length)];
         const x = i * fontSize;
         const y = drops[i] * fontSize;
-
+        
+        // Gradient effect for characters
+        const gradient = ctx.createLinearGradient(x, y, x, y + fontSize * 2);
+        gradient.addColorStop(0, '#00CED1');
+        gradient.addColorStop(0.5, '#8A2BE2');
+        gradient.addColorStop(1, '#FF1493');
+        
+        ctx.fillStyle = gradient;
         ctx.fillText(text, x, y);
-
+        
         if (y > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
@@ -51,7 +58,7 @@ export const MatrixBackground = () => {
     };
 
     window.addEventListener('resize', handleResize);
-
+    
     return () => {
       clearInterval(interval);
       window.removeEventListener('resize', handleResize);
@@ -59,10 +66,10 @@ export const MatrixBackground = () => {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
+    <canvas 
+      ref={canvasRef} 
       className="fixed top-0 left-0 w-full h-full pointer-events-none z-0"
-      style={{ opacity: 0.15 }}
+      style={{ opacity: 0.3 }}
     />
   );
 };
