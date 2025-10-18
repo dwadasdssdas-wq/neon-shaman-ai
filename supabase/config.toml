@@ -1,0 +1,4 @@
+project_id = "kuepelelfilippjbqwwf"
+
+[functions.shaman-ai]
+verify_jwt = false
