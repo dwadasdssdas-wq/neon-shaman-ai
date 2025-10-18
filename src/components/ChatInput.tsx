@@ -47,6 +47,10 @@ export const ChatInput = ({ onSend, onImageUpload, isLoading }: ChatInputProps) 
           <MessageCircle className="w-4 h-4 mr-2" />
           Диалог
         </Button>
+        <Button>
+  <MessageCircle className="w-4 h-4 mr-2" />
+  Диалог
+</Button>
         <Button
           type="button"
           variant={mode === 'math' ? 'default' : 'outline'}
