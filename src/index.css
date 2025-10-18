@@ -1,109 +1,30 @@
+/* src/index.css - обновленная версия */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
 @layer base {
   :root {
-    /* Neon matrix theme */
-    --background: 240 10% 3.9%;
-    --foreground: 180 100% 90%;
-
-    --card: 240 10% 8%;
-    --card-foreground: 180 100% 90%;
-
-    --popover: 240 10% 8%;
-    --popover-foreground: 180 100% 90%;
-
-    /* Neon purple primary */
-    --primary: 270 100% 60%;
-    --primary-foreground: 0 0% 100%;
-    
-    /* Neon cyan secondary */
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 240 10% 3.9%;
-
-    --muted: 240 10% 15%;
-    --muted-foreground: 180 50% 70%;
-
-    /* Neon pink accent */
-    --accent: 330 100% 60%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 180 50% 30%;
-    --input: 240 10% 15%;
-    --ring: 180 100% 50%;
-
-    --radius: 0.75rem;
-    
-    /* Custom neon colors */
-    --neon-purple: 270 100% 60%;
-    --neon-cyan: 180 100% 50%;
-    --neon-pink: 330 100% 60%;
-    
-    /* Glassmorphism */
-    --glass-bg: 240 10% 8% / 0.6;
-    --glass-border: 180 50% 50% / 0.2;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 180 100% 90%;
-
-    --card: 240 10% 8%;
-    --card-foreground: 180 100% 90%;
-
-    --popover: 240 10% 8%;
-    --popover-foreground: 180 100% 90%;
-
-    --primary: 270 100% 60%;
-    --primary-foreground: 0 0% 100%;
-
-    --secondary: 180 100% 50%;
-    --secondary-foreground: 240 10% 3.9%;
-
-    --muted: 240 10% 15%;
-    --muted-foreground: 180 50% 70%;
-
-    --accent: 330 100% 60%;
-    --accent-foreground: 0 0% 100%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 100%;
-
-    --border: 180 50% 30%;
-    --input: 240 10% 15%;
-    --ring: 180 100% 50%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 1.2%;
+    --secondary: 222.2 84% 4.9%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215.4 16.3% 56.9%;
+    --accent: 216 34% 17%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 216 34% 17%;
+    --radius: 0.5rem;
   }
 }
 
@@ -111,51 +32,158 @@ All colors MUST be HSL.
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-feature-settings: "rlig" 1, "calt" 1;
   }
-  
-  /* Matrix rain animation */
-  @keyframes matrix-rain {
-    0% { transform: translateY(-100%); opacity: 1; }
-    100% { transform: translateY(100vh); opacity: 0; }
+}
+
+/* Matrix Effects */
+@keyframes matrix-rain {
+  0% {
+    transform: translateY(-100%);
+    opacity: 1;
   }
-  
-  /* Neon glow */
-  @keyframes neon-glow {
-    0%, 100% { 
-      text-shadow: 0 0 10px hsl(var(--neon-cyan)), 
-                   0 0 20px hsl(var(--neon-cyan)),
-                   0 0 30px hsl(var(--neon-cyan));
-    }
-    50% { 
-      text-shadow: 0 0 5px hsl(var(--neon-cyan)), 
-                   0 0 10px hsl(var(--neon-cyan)),
-                   0 0 15px hsl(var(--neon-cyan));
-    }
+  100% {
+    transform: translateY(100vh);
+    opacity: 0;
   }
-  
-  /* Pulse animation */
-  @keyframes pulse-glow {
-    0%, 100% { 
-      box-shadow: 0 0 20px hsl(var(--primary) / 0.5),
-                  0 0 40px hsl(var(--primary) / 0.3);
-    }
-    50% { 
-      box-shadow: 0 0 30px hsl(var(--primary) / 0.7),
-                  0 0 60px hsl(var(--primary) / 0.5);
-    }
+}
+
+@keyframes neon-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px #00CED1,
+      0 0 10px #00CED1,
+      0 0 15px #00CED1,
+      0 0 20px #00CED1,
+      0 0 35px #00CED1,
+      0 0 40px #00CED1;
   }
-  
-  .neon-text {
-    animation: neon-glow 2s ease-in-out infinite;
+  50% {
+    box-shadow: 
+      0 0 2px #00CED1,
+      0 0 5px #00CED1,
+      0 0 10px #00CED1,
+      0 0 15px #00CED1,
+      0 0 25px #00CED1,
+      0 0 30px #00CED1;
   }
-  
-  .glass-panel {
-    background: hsl(var(--glass-bg));
-    backdrop-filter: blur(10px);
-    border: 1px solid hsl(var(--glass-border));
+}
+
+@keyframes neon-glow-purple {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px #8A2BE2,
+      0 0 10px #8A2BE2,
+      0 0 15px #8A2BE2,
+      0 0 20px #8A2BE2,
+      0 0 35px #8A2BE2,
+      0 0 40px #8A2BE2;
   }
+  50% {
+    box-shadow: 
+      0 0 2px #8A2BE2,
+      0 0 5px #8A2BE2,
+      0 0 10px #8A2BE2,
+      0 0 15px #8A2BE2,
+      0 0 25px #8A2BE2,
+      0 0 30px #8A2BE2;
+  }
+}
+
+@keyframes neon-glow-pink {
+  0%, 100% {
+    box-shadow: 
+      0 0 5px #FF1493,
+      0 0 10px #FF1493,
+      0 0 15px #FF1493,
+      0 0 20px #FF1493,
+      0 0 35px #FF1493,
+      0 0 40px #FF1493;
+  }
+  50% {
+    box-shadow: 
+      0 0 2px #FF1493,
+      0 0 5px #FF1493,
+      0 0 10px #FF1493,
+      0 0 15px #FF1493,
+      0 0 25px #FF1493,
+      0 0 30px #FF1493;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom Classes */
+.glass-panel {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(34, 211, 238, 0.1);
+}
+
+.neon-glow {
+  animation: neon-glow 3s ease-in-out infinite;
+}
+
+.neon-glow-purple {
+  animation: neon-glow-purple 3s ease-in-out infinite;
+}
+
+.neon-glow-pink {
+  animation: neon-glow-pink 3s ease-in-out infinite;
+}
+
+.neon-text {
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor,
+    0 0 35px currentColor,
+    0 0 40px currentColor;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00CED1, #8A2BE2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00CED1, #FF1493);
 }
