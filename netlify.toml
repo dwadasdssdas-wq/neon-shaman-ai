@@ -1,4 +1,3 @@
-// netlify.toml - для деплоя на Netlify
 [build]
   command = "npm run build"
   publish = "dist"
